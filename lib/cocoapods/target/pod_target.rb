@@ -347,10 +347,9 @@ module Pod
               bcsymbolmap_paths = framework_path.dirname.glob('*.bcsymbolmap')
               bcsymbolmap_paths.map! do |bcsymbolmap_path|
                 bcsymbolmap_relative_path_to_sandbox = bcsymbolmap_path.relative_path_from(sandbox_root)
-                "${PODS_ROOT}/#{bcsymbolmap_relative_path_to_sandbox}" if bcsymbolmap_path.exist?
+                "${PODS_ROOT}/#{bcsymbolmap_relative_path_to_sandbox}"
               end
-              bcsymbolmap_result_paths = bcsymbolmap_paths.compact
-              bcsymbolmap_source = bcsymbolmap_result_paths unless bcsymbolmap_result_paths.empty?
+              bcsymbolmap_source = bcsymbolmap_paths unless bcsymbolmap_paths.empty?
             end        
             FrameworkPaths.new(framework_source, dsym_source, bcsymbolmap_source)
           end
