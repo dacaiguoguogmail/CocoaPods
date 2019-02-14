@@ -344,6 +344,8 @@ module Pod
                             "${PODS_ROOT}/#{relative_path_to_sandbox}.dSYM"
                           end
             dirname = framework_path.dirname
+            bcsymbolmap_paths = []
+
             if dirname.exist?
               Dir.chdir(dirname) do
                 bcsymbolmap_paths = Dir.glob('*.bcsymbolmap').map { |bcsymbolmap_file_name| Pathname.new(dirname + bcsymbolmap_file_name) }
